@@ -21,7 +21,12 @@ if (preg_match($rules_timestamp, $query)) {
     }
 }
 else {
-    $result = strtotime($query);
+    $split  = explode(".", $query);
+    $result = strtotime($split[0]);
+
+    if (count($split) > 1 && preg_match("/^\d{3}$/", $split[1])) {
+        $result .= $split[1];
+    }
 
     if (!preg_match($rules_timestamp, $result)) {
         $result = "{$query} is invaild datetime";
