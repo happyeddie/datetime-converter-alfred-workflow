@@ -40,6 +40,10 @@ foreach ($tzs as $tz) {
         }
         else {
             $result = "{$query} is invaild timestamp";
+            $items[] = [
+                "title" => "{$result}",
+            ];
+            break;
         }
     }
     else {
@@ -52,6 +56,10 @@ foreach ($tzs as $tz) {
     
         if (!preg_match($rules_timestamp, $result)) {
             $result = "{$query} is invaild datetime";
+            $items[] = [
+                "title" => "{$result}",
+            ];
+            break;
         }
     }
     
